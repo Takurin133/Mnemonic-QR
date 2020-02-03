@@ -1,19 +1,6 @@
 <template>
   <div id="app">
-    <ion-item>
-      <ion-label position="floating">password</ion-label>
-      <ion-input
-      @input="password = $event.target.value"
-      ></ion-input>
-      <router-link to="/Qrdisplay">
-        <ion-button size="small" shape="round" @click="getPassWord()"
-          >Generate Account QRCode</ion-button>
-      </router-link>
-       <img
-        :src="image"
-        alt="mnemonic data"
-      >
-    </ion-item>
+    <router-view />
   </div>
 </template>
 

@@ -8,10 +8,12 @@
   },
   "dependencies": {
     "@ionic/vue": "0.0.9",
+    "bufferutil": "^4.0.1",
     "nem2-hd-wallets": "^0.7.0",
     "nem2-qr-library": "^0.7.0",
     "nem2-sdk": "^0.16.5",
     "register-service-worker": "^1.6.2",
+    "utf-8-validate": "^5.0.2",
     "vue": "^2.6.11",
     "vue-class-component": "^7.2.2",
     "vue-property-decorator": "^8.3.0",

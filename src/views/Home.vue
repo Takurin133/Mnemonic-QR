@@ -1,7 +1,19 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <ion-item>
+      <ion-label position="floating">password</ion-label>
+      <ion-input
+      @input="password = $event.target.value"
+      ></ion-input>
+      <router-link to="/qr-display">
+        <ion-button size="small" shape="round" @click="getPassWord()"
+          >Generate Account QRCode</ion-button>
+      </router-link>
+       <img
+        :src="image"
+        alt="mnemonic data"
+      >
+    </ion-item>
   </div>
 </template>
 
