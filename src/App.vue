@@ -1,11 +1,24 @@
 <template>
   <div id="app">
-    <router-view />
+    <ion-item>
+      <ion-label position="floating">password</ion-label>
+      <ion-input
+      @input="password = $event.target.value"
+      ></ion-input>
+        <ion-button size="small" shape="round" @click="getPassWord()"
+          >Generate Account QRCode</ion-button>
+      </router-link>
+       <img
+        :src="image"
+        alt="mnemonic data"
+      >
+    </ion-item>
   </div>
 </template>
 
 <script>
 import GetWalletFromMnemonicQRJson from './ts/GetWalletFromMnemonicQRJson'
+import GenerateMnemonic from './ts/GenerateMnemonic'
 
 export default {
   data () {
@@ -26,9 +39,11 @@ export default {
       console.log(this.password)
       // 入力値を代入したpasswordをthis.passwordとよしなに結びつけてくれるのがVue
       // methods内でのpasswordはローカル変数になるので定義されない
-      const model = new SettingModel()
+      const model = new GetWalletFromMnemonicQRJson()
+      const a = new GenerateMnemonic()
       model.password = this.password
-      this.image = 'data:image/png;base64,' + exportMnemonic
+      a.model = this.password
+      this.image = 'data:image/png;base64,' + model.exportMnemonic
     }
   }
 }
