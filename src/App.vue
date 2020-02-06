@@ -7,7 +7,6 @@
       ></ion-input>
         <ion-button size="small" shape="round" @click="getPassWord()"
           >Generate Account QRCode</ion-button>
-      </router-link>
        <img
         :src="image"
         alt="mnemonic data"
@@ -34,16 +33,17 @@ export default {
     console.log('mounted Import')
   },
   methods: {
-    getPassWord () {
+    async getPassWord () {
       console.log('on click button')
       console.log(this.password)
       // 入力値を代入したpasswordをthis.passwordとよしなに結びつけてくれるのがVue
       // methods内でのpasswordはローカル変数になるので定義されない
-      const model = new GetWalletFromMnemonicQRJson()
-      const a = new GenerateMnemonic()
-      model.password = this.password
-      a.model = this.password
-      this.image = 'data:image/png;base64,' + model.exportMnemonic
+      // const model = new GetWalletFromMnemonicQRJson()
+      // const a = new GenerateMnemonic()
+      // model.password = this.password
+      // a.model = this.password
+      const encodedMnemonic = await GenerateMnemonic.exportEncodedQR(this.password);
+      this.image = encodedMnemonic
     }
   }
 }
