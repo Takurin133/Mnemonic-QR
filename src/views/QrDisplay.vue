@@ -1,10 +1,25 @@
 <template>
-    <h1>QrDisplayじゃけぇ</h1>
+  <div class="QrDisplay">
+       <img
+        :src="image"
+        alt="mnemonic data"
+      >
+  </div>
 </template>
 
-
-<style>
-h1 {
-    margin-top: 200px;
+<script>
+// @ is an alias to /src
+import encodedMnemonic from '../App.vue'
+import GenerateMnemonic from '../ts/GenerateMnemonic'
+export default {
+  name: 'home',
+  data(){
+      return{
+          image:''
+      }
+  },
+    Updated(){
+  this.image = encodedMnemonic;
+  }
 }
-</style>
+</script>

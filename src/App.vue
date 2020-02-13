@@ -8,6 +8,8 @@
         <ion-button size="small" shape="round" @click="getPassWord()"
           >Generate Account QRCode</ion-button>
        <img
+        style = "display: none;"
+        id ="hoge"
         :src="image"
         alt="mnemonic data"
       >
@@ -23,7 +25,8 @@ export default {
   data () {
     return {
       password: '',
-      image: ''
+      image: '',
+      // accept: false
     }
   },
   created () {
@@ -31,9 +34,19 @@ export default {
   },
   mounted () {
     console.log('mounted Import')
+    // var node = document.getElementById('src');
+    // if(node != null){
+        //console.log("remove node=" + node.id);
+	  // node.parentNode.removeChild(node);
   },
+  // async Updated(){
+  //   console.log("Updated")
+  //   const encodedMnemonic = await GenerateMnemonic.exportEncodedQR(this.password);
+      // this.image = encodedMnemonic;
+  // },
   methods: {
     async getPassWord () {
+      // $val = $("select[name='Goods']").val();
       console.log('on click button')
       console.log(this.password)
       // 入力値を代入したpasswordをthis.passwordとよしなに結びつけてくれるのがVue
@@ -43,7 +56,16 @@ export default {
       // model.password = this.password
       // a.model = this.password
       const encodedMnemonic = await GenerateMnemonic.exportEncodedQR(this.password);
-      this.image = encodedMnemonic
+      this.image = encodedMnemonic;
+      var obj1 = document.getElementById('hoge');
+      obj1.style.display = 'block'
+      // this.value = true;
+      // render(h){
+      //    return(
+      //      <div class= "imgggg">
+      //      <img src={image} alt ="mnemonic data"></img>
+      //      </div>
+      //    )};
     }
   }
 }
