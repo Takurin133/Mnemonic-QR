@@ -7,11 +7,9 @@
       ></ion-input>
         <ion-button size="small" shape="round" @click="getPassWord()"
           >Generate Account QRCode</ion-button>
-       <img
-        style = "display: none;"
-        id ="hoge"
+      <img
+        v-if="image"
         :src="image"
-        alt="mnemonic data"
       >
     </ion-item>
   </div>
@@ -57,8 +55,6 @@ export default {
       // a.model = this.password
       const encodedMnemonic = await GenerateMnemonic.exportEncodedQR(this.password);
       this.image = encodedMnemonic;
-      var obj1 = document.getElementById('hoge');
-      obj1.style.display = 'block'
       // this.value = true;
       // render(h){
       //    return(
