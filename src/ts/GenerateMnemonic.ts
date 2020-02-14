@@ -14,11 +14,12 @@ export default class GenerateMnemonic{
             const encodedQR = exportMnemonic.toBase64().toPromise();
         
             if(passnum!=8){
-                throw new Error("8文字のpasswordを入力して下さい")
+                throw Error("8文字のpasswordを入力して下さい")
             }
             return encodedQR;
         }catch(e){
             console.log("エラー：", e.message)
+            throw(e);
         }
     }
 }

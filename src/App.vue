@@ -1,6 +1,9 @@
 <template>
   <div id="app">
     <ion-item>
+      <div v-if="err">
+        <ion-text color="danger"><p>{{err}}</p></ion-text>
+      </div>
       <ion-label position="floating">password</ion-label>
       <ion-input
       @input="password = $event.target.value"
@@ -24,6 +27,7 @@ export default {
     return {
       password: '',
       image: '',
+      err: '',
       // accept: false
     }
   },
@@ -47,14 +51,21 @@ export default {
       // $val = $("select[name='Goods']").val();
       console.log('on click button')
       console.log(this.password)
+      this.err = '';
+      this.image = '';
       // 入力値を代入したpasswordをthis.passwordとよしなに結びつけてくれるのがVue
       // methods内でのpasswordはローカル変数になるので定義されない
       // const model = new GetWalletFromMnemonicQRJson()
       // const a = new GenerateMnemonic()
       // model.password = this.password
       // a.model = this.password
-      const encodedMnemonic = await GenerateMnemonic.exportEncodedQR(this.password);
-      this.image = encodedMnemonic;
+      try {
+        const encodedMnemonic = await GenerateMnemonic.exportEncodedQR(this.password);
+        this.image = encodedMnemonic;
+      } catch (e) {
+        console.error(e);
+        this.err = e;
+      }
       // this.value = true;
       // render(h){
       //    return(
