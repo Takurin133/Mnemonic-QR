@@ -4,16 +4,26 @@
       <div v-if="err">
         <ion-text color="danger"><p>{{err}}</p></ion-text>
       </div>
-      <ion-label position="floating">password</ion-label>
+         <ion-card-header>
+            <ion-card-title>Change Password into QRCode</ion-card-title>      
+    </ion-card-header>
+ <ion-card-content>
+      パスワードをニーモニック変換を用いてQRコード表示します。
+    </ion-card-content>
+      <ion-label position="floating">password(ここに8文字で入力してください)</ion-label>
       <ion-input
       @input="password = $event.target.value"
       ></ion-input>
         <ion-button size="small" shape="round" @click="getPassWord()"
           >Generate Account QRCode</ion-button>
+     <ion-card>
+      <ion-card-content>
       <img
         v-if="image"
         :src="image"
       >
+       </ion-card-content>
+      </ion-card>
     </ion-item>
   </div>
 </template>
